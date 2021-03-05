@@ -1,0 +1,12 @@
+##
+## The following macro will be called with a byte array containing
+## a GTS Wrapper.
+##
+
+<%
+  'wrapper' STORE
+  $wrapper UNWRAPEMPTY TOSELECTOR STDOUT
+  // We return a structure (a Row instance), it is created
+  // via a list fed to ->SPARKROW
+  [ '' 0 ] ->SPARKROW
+%>

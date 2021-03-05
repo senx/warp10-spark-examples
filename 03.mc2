@@ -1,0 +1,21 @@
+##
+## The following code will be called with a byte array containing
+## a GTS Wrapper.
+## It is not a macro hence it will be wrapped in <% ... %> by
+## the @03.mc2 syntax in the SparkSQL expression
+##
+
+'wrapper' STORE
+
+[] // List to hold the results
+// Unwrap the wrapper
+// Emit a list of rows with the name of the GTS, the timestamp and the value
+$wrapper UNWRAP
+DUP TOSELECTOR 'gts' STORE
+<%
+  LIST-> DROP [ 'ts' 'lat' 'lon' 'elev' 'value' ] STORE
+  [ $gts $ts $value TOSTRING ] ->SPARKROW +! 
+%> FOREACH
+
+// We now wrap the list in a Row
+1 ->LIST ->SPARKROW
