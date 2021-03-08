@@ -2,6 +2,8 @@
 # Copyright 2021,  SenX S.A.S.
 #
 
+from pyspark.sql.types import *
+
 from pyspark.sql import SparkSession
 from pyspark.sql import SQLContext
 
@@ -14,7 +16,8 @@ sqlContext = SQLContext(sc)
 ## Read observations from a CSV file with lines containing GTS,TS,VALUE
 ##
 
-df = spark.read.csv('04.csv', sep=r',', header=True)
+schema = StructType([ StructField('gts', StringType(), True), StructField('ts', LongType(), True), StructField('value', DoubleType(), True)])
+df = spark.read.csv('04.csv', sep=r',', header=True, schema=schema)
 
 ##
 ## Generate a DF with a pair of values so we can group by key the underlying RDD

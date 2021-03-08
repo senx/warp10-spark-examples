@@ -50,15 +50,15 @@ df = rdd.toDF()
 ## Now process each record with the code in 03.mc2 which will emit a list of Rows [ gts, ts, value ]
 ##
 
-sqlContext.registerJavaFunction("ws", "io.warp10.spark.WarpScriptUDF2", "`array` ARRAY< STRUCT<`gts`: STRING, `ts`: LONG,`value`: STRING> >")
+sqlContext.registerJavaFunction("ws", "io.warp10.spark.WarpScriptUDF2", "ARRAY< STRUCT<gts: STRING, ts: LONG,value: STRING> >")
 
 # Create a temp view so the DF can be manipulated using SparlSQL
 df.createOrReplaceTempView('VIEW')
-df = sqlContext.sql("SELECT ws('@03.mc2', _2) AS row FROM VIEW")
 
 # Since the WarpScript code emits an array of Rows, we must explode the array and then extract the elements from each Row to
 # get a dataframe with the observations
-df = df.select(explode("row.array").alias("row"))
+
+df = sqlContext.sql("SELECT explode(ws('@03.mc2', _2)) AS row FROM VIEW")
 df = df.select("row.gts","row.ts","row.value")
 
 ##

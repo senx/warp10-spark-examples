@@ -16,6 +16,3 @@ DUP TOSELECTOR 'gts' STORE
   LIST-> DROP [ 'ts' 'lat' 'lon' 'elev' 'value' ] STORE
   [ $gts $ts $value TOSTRING ] ->SPARKROW +! 
 %> FOREACH
-
-// We now wrap the list in a Row
-1 ->LIST ->SPARKROW

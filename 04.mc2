@@ -23,8 +23,8 @@ $iter
   // Explode the LIST
   LIST-> [ 'gts' 'ts' 'value' NULL ] STORE
 
-  // Add value to the encoder (the elements are STRINGs, we convert them first)
-  $ts TOLONG NaN NaN NaN $value TOLONG ADDVALUE
+  // Add value to the encoder
+  $ts NaN NaN NaN $value ADDVALUE
 %> FOREACH
 // Rename the Encoder
 $gts RENAME

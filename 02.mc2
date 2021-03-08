@@ -5,8 +5,9 @@
 
 <%
   'wrapper' STORE
-  $wrapper UNWRAPEMPTY TOSELECTOR STDOUT
+  $wrapper UNWRAP
+  DUP TOSELECTOR SWAP SIZE [ 'gts' 'size' ] STORE
   // We return a structure (a Row instance), it is created
   // via a list fed to ->SPARKROW
-  [ '' 0 ] ->SPARKROW
+  [ $gts $size ] ->SPARKROW
 %>
