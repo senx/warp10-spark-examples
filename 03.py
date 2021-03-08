@@ -65,4 +65,9 @@ df = df.select("row.gts","row.ts","row.value")
 ## df now contains rows of observations: gts,ts,value
 ##
 
-print df.take(10)
+schemaTreeString = df._jdf.schema().treeString()
+showString = df._jdf.showString(10, 150, False)
+print('*' * 200)
+print(schemaTreeString)
+print(showString)
+print('*' * 200)

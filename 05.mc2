@@ -1,0 +1,33 @@
+##
+## Grouped RDD converted to DataFrames contain rows (LISTs once in WarpScript) with the following elements
+##
+## iter: an iterable on the grouped elements
+## index: an index within the partition
+## length: the maximum number of elements in the iterable
+##
+
+LIST-> [ 'iter' 'index' 'length' NULL ] STORE
+
+//
+// Create an encoder that will be populated
+//
+
+NEWENCODER
+
+// Iterate over the grouped Rows
+
+$iter
+<%
+  // Convert the Row instance to a LIST
+  SPARK->
+  // Explode the LIST
+  LIST-> [ 'gts' 'ts' 'value' NULL ] STORE
+
+  // Add value to the encoder
+  $ts TOLONG NaN NaN NaN $value TOLONG ADDVALUE
+%> FOREACH
+// Rename the Encoder
+$gts RENAME
+
+// Wrap the encoder as a byte array
+WRAPRAW

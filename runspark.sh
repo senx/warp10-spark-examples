@@ -25,6 +25,8 @@ export YARN_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 
 export JAVA_HOME=${JAVA_HOME-/opt/java8}
 
+export PYSPARK_PYTHON=${PYSPARK_PYTHON-/usr/bin/python2.7}
+
 ##
 ## Use the config below to run the Spark job locally
 ##

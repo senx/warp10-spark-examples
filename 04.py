@@ -36,4 +36,10 @@ df.createOrReplaceTempView('GROUPED')
 sqlContext.registerJavaFunction("ws", "io.warp10.spark.WarpScriptUDF2", "BINARY")
 
 df = sqlContext.sql("SELECT ws('@04.mc2', _2) AS wrapper FROM GROUPED")
-print df.take(10)
+
+schemaTreeString = df._jdf.schema().treeString()
+showString = df._jdf.showString(10, 150, False)
+print('*' * 200)
+print(schemaTreeString)
+print(showString)
+print('*' * 200)

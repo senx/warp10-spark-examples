@@ -31,7 +31,7 @@ df = rdd.groupByKey().toDF()
 df.createOrReplaceTempView('GROUPED')
 sqlContext.registerJavaFunction("ws", "io.warp10.spark.WarpScriptUDF2", "BINARY")
 
-df = sqlContext.sql("SELECT ws('@04.mc2', _2) AS wrapper FROM GROUPED")
+df = sqlContext.sql("SELECT ws('@05.mc2', _2) AS wrapper FROM GROUPED")
 
 ##
 ## The Warp10OutputFormat expects a RDD of pairs (None,byte array) where None is ignored and the byte array

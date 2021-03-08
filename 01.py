@@ -56,4 +56,9 @@ conf['warp10.http.read.timeout'] = '60000'
 rdd = sc.newAPIHadoopRDD('io.warp10.hadoop.Warp10InputFormat', 'org.apache.hadoop.io.Text', 'org.apache.hadoop.io.BytesWritable', conf=conf)
 df = rdd.toDF()
 
-print df.take(10)
+schemaTreeString = df._jdf.schema().treeString()
+showString = df._jdf.showString(10, 150, False)
+print('*' * 200)
+print(schemaTreeString)
+print(showString)
+print('*' * 200)
