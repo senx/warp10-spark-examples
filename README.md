@@ -178,7 +178,7 @@ Once you have adapted `02.py` to your Warp 10 instance, you can run the example 
 
 
 ```
-sh runspark.sh -f 02.m2 02.py
+sh runspark.sh -f 02.mc2 02.py
 ```
 
 
