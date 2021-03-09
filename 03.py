@@ -65,4 +65,4 @@ df = df.select("row.gts","row.ts","row.value")
 ## df now contains rows of observations: gts,ts,value
 ##
 
-df.show(n=10,truncate=True)
+df.show(10)
