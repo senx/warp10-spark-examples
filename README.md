@@ -196,7 +196,7 @@ sh runspark.sh -f 03.mc2 03.py
 # Converting a DataFrame of observations to a Geo Time Series
 
 
-Data may reside elsewhere than in Warp 10, for example in [Parquet](http://parquet.apache.org/), [ORC](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#:~:text=The%20Optimized%20Row%20Columnar%20(ORC,%2C%20writing%2C%20and%20processing%20data.) or even simple CSV files. Yet it may be necessary to process the time series stored in those files using the Warp 10 Analytics Engine, it is therefore important to be able to convert observations from a Spark DataFrame into Geo Time Series.
+Data may reside elsewhere than in Warp 10, for example in [Parquet](http://parquet.apache.org/), [ORC](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC) or even simple CSV files. Yet it may be necessary to process the time series stored in those files using the Warp 10 Analytics Engine, it is therefore important to be able to convert observations from a Spark DataFrame into Geo Time Series.
 
 
 Example `04.py` shows how this can be done. The data is in the CSV file `04.csv`. Each line contains a name of series, a timestamp and a value. The data will be loaded in a single DataFrame whose records are obvervations of different times series.
