@@ -253,7 +253,7 @@ Example `05.py` shows how the `Warp10OutputFormat` is used. You will need to spe
 
 
 ```
-sh runspark.sh 05.py
+sh runspark.sh -f 04.mc2 05.py
 ```
 
 
