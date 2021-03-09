@@ -21,7 +21,7 @@ export SPARK_HOME=/opt/spark-2.4.5-bin-hadoop2.7
 
 if [ ! -f ${SPARK_HOME}/bin/spark-submit ]
 then
-  echo "### Cannot find spark-submit in '${SPARK_HOME}/bin', ensure SPARK_HOME points to your Spark install"
+  echo "### Cannot find spark-submit in '${SPARK_HOME}/bin', ensure SPARK_HOME points to your Spark 2 install"
   exit 1
 fi
 
