@@ -4,7 +4,7 @@ There is no doubt time series data are becoming more and more important in many 
 Different TSDBs target different use cases, some do monitoring, others do finance, yet others specialize in IoT. They all come with their own way of querying or manipulating the data. Some TSDBs can only be used as dumb data stores, relying on external tools for processing the data, while others provide more advanced analytics capabilities. Most TSDBs claim they are scalable, and to some extent this is true. 
 
 
-**But when it comes to processing or analyzing massive historical data sets, no TSDB actually works and they will all recommend the use of tools such as Spark**. And this is when problems arise.
+**But when it comes to processing or analyzing massive historical data sets, most TSDBs actually won't work and will recommend the use of tools such as Spark**. And this is when problems arise.
 
 
 ## Main issue
@@ -57,6 +57,7 @@ The rest of this post will walk you through some examples. In order to keep the 
 git clone https://github.com/senx/warp10-spark-examples.git
 ```
 
+You will also need to have [Spark 2.x](http://spark.apache.org/downloads.html) installed locally and point the environment variable `SPARK_HOME` in `runspark.sh` to the installation directory.
 
 The examples are all in PySpark, but similar results could be obtained using the Scala or Java API. Please refer to the [`warp10-spark2`](https://github.com/senx/warp10-spark2) code.
 
