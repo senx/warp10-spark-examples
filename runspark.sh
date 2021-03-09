@@ -18,14 +18,23 @@ DRIVER_MEMORY=2G
 EXECUTOR_MEMORY=2G
 
 export SPARK_HOME=/opt/spark-2.4.5-bin-hadoop2.7
-#PATH=${PATH}:${SPARK_HOME}/bin
 
-HADOOP_HOME=${HADOOP_HOME-/opt/hadoop}
-export YARN_CONF_DIR=${HADOOP_HOME}/etc/hadoop
+if [ ! -f ${SPARK_HOME}/bin/spark-submit ]
+then
+  echo "### Cannot find spark-submit in '${SPARK_HOME}/bin', ensure SPARK_HOME points to your Spark install"
+  exit 1
+fi
 
 export JAVA_HOME=${JAVA_HOME-/opt/java8}
 
-command -v python >/dev/null 2>&1 || export PYSPARK_PYTHON=python2
+if [ ! -f ${JAVA_HOME}/bin/java ]
+then
+  echo "### Cannot find java in '${JAVA_HOME}/bin', ensure JAVA_HOME is correctly set"
+  exit 1
+fi
+
+export PYSPARK_PYTHON=python
+command -v ${PYSPARK_PYTHON} >/dev/null 2>&1 || export PYSPARK_PYTHON=python2
 
 ##
 ## Use the config below to run the Spark job locally
