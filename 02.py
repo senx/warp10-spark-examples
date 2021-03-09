@@ -58,4 +58,4 @@ df = sqlContext.sql("SELECT ws('%02.mc2', _2) AS row FROM VIEW")
 # Since the WarpScript code emits a Row, we now have an encapsulated Row in 'df', so we will select the columns to make them the columns of a ne Dataframe
 df = df.select("row.gts","row.count")
 
-df.show(10)
+df.show(10,100)
