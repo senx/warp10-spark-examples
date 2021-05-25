@@ -68,6 +68,5 @@ exec ${SPARK_HOME}/bin/spark-submit --master "${MASTER}" \
        --driver-memory ${DRIVER_MEMORY} \
        --executor-memory ${EXECUTOR_MEMORY} \
        --properties-file spark.conf \
-       --packages io.warp10:warp10-spark:1.0.5 \
-       --repositories https://dl.bintray.com/senx/maven \
+       --packages io.warp10:warp10-spark:1.0.7 \
        --files ${FILES} $@
